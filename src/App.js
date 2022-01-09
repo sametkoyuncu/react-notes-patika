@@ -37,7 +37,7 @@ function App() {
   }
 
   const showAddModal = () => {
-    setModal(true)
+    setAddModal(true)
   }
 
   const deleteNote = (id) => {
