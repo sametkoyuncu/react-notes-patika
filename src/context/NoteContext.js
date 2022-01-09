@@ -27,11 +27,27 @@ const defaultNotes = [
 
 export const NoteProvider = ({ children }) => {
   const [notes, setNotes] = useState(
-    localStorage.getItem('notes') || defaultNotes
+    JSON.parse(localStorage.getItem('notes')) || defaultNotes
   )
   useEffect(() => {
-    localStorage.setItem('notes', notes)
+    localStorage.setItem('notes', JSON.stringify(notes))
   }, [notes])
+  //   const addNote = (note) => {
+  //     setNotes(...notes, note)
+  //   }
+  //   // id var mı kontrolü eklenebilir
+  //   const editNote = (id, note) => {
+  //     notes[id] = note
+  //     setNotes(notes)
+  //   }
+  //   const deleteNote = (id) => {
+  //     const notes_ = notes.filter((note) => note.id !== id)
+  //     setNotes(...notes_)
+  //     }
+
+  //     addNote,
+  //     editNote,
+  //     deleteNote,
   const values = {
     notes,
     setNotes,
