@@ -6,15 +6,28 @@ import './App.css'
 
 function App() {
   const [modal, setModal] = useState(false)
-  const [selectedNote, setSelectedNote] = useState(null)
+  const [selectedNoteId, setSelectedNoteId] = useState(null)
+  const [selectedNoteTitle, setSelectedNoteTitle] = useState(null)
+  const [selectedNoteText, setSelectedNoteText] = useState(null)
   const { notes, setNotes } = useNote()
+
+  const selectedNote = {
+    selectedNoteId,
+    selectedNoteTitle,
+    selectedNoteText,
+    setSelectedNoteId,
+    setSelectedNoteTitle,
+    setSelectedNoteText,
+  }
 
   // modal'a gönderilecek note'u seçme
   const showModal = (id) => {
     let note
     try {
       note = notes.filter((note) => note.id === id)
-      setSelectedNote(note[0])
+      setSelectedNoteId(note[0].id)
+      setSelectedNoteTitle(note[0].title)
+      setSelectedNoteText(note[0].text)
     } finally {
       setModal(true)
     }
@@ -23,12 +36,6 @@ function App() {
   const deleteNote = (id) => {
     let _notes = notes.filter((note) => note.id !== id)
     setNotes(_notes)
-  }
-
-  const updateNote = (note) => {
-    const index = notes.indexOf(note.id)
-    notes[index].title = note.title
-    notes[index].text = note.text
   }
 
   return (
@@ -43,13 +50,7 @@ function App() {
           />
         ))}
       </div>
-      {modal && (
-        <EditModal
-          setModal={setModal}
-          selectedNote={selectedNote}
-          updateNote={updateNote}
-        />
-      )}
+      {modal && <EditModal setModal={setModal} selectedNote={selectedNote} />}
     </div>
   )
 }
