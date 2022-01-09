@@ -1,4 +1,4 @@
-function NoteCard({ showModal, note }) {
+function NoteCard({ showModal, note, deleteNote }) {
   return (
     <div className="max-w-sm overflow-hidden shadow-lg bg-white rounded-xl hover:shadow-xl hover:shadow-sky-600 transition-all">
       <div className="px-6 py-4">
@@ -14,7 +14,7 @@ function NoteCard({ showModal, note }) {
         </button>
         <button
           className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded-full"
-          //   onClick={editNote(deleteNote.id)}
+          onClick={() => deleteNote(note.id)}
         >
           Sil
         </button>

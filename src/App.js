@@ -7,7 +7,7 @@ import './App.css'
 function App() {
   const [modal, setModal] = useState(false)
   const [selectedNote, setSelectedNote] = useState(null)
-  const { notes } = useNote()
+  const { notes, setNotes } = useNote()
 
   // modal'a gönderilecek note'u seçme
   const showModal = (id) => {
@@ -20,6 +20,11 @@ function App() {
     }
   }
 
+  const deleteNote = (id) => {
+    let _notes = notes.filter((note) => note.id !== id)
+    setNotes(_notes)
+  }
+
   const updateNote = (note) => {
     const index = notes.indexOf(note.id)
     notes[index].title = note.title
@@ -30,7 +35,12 @@ function App() {
     <div className="w-full min-h-screen bg-sky-300">
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-4 pt-10">
         {notes.map((note) => (
-          <NoteCard key={note.id} showModal={showModal} note={note} />
+          <NoteCard
+            key={note.id}
+            showModal={showModal}
+            deleteNote={deleteNote}
+            note={note}
+          />
         ))}
       </div>
       {modal && (
