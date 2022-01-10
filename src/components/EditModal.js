@@ -3,7 +3,7 @@ import { Fragment, useRef } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 
 export default function EditModal({ setModal, selectedNote }) {
-  const { notes } = useNote()
+  const { notes, setNotes } = useNote()
 
   const cancelButtonRef = useRef(null)
 
@@ -13,6 +13,7 @@ export default function EditModal({ setModal, selectedNote }) {
     )
     notes[index].title = selectedNote.selectedNoteTitle
     notes[index].text = selectedNote.selectedNoteText
+    setNotes([...notes])
     setModal(false)
   }
 

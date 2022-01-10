@@ -42,7 +42,7 @@ function App() {
 
   const deleteNote = (id) => {
     let _notes = notes.filter((note) => note.id !== id)
-    setNotes(_notes)
+    setNotes([..._notes])
   }
 
   return (
