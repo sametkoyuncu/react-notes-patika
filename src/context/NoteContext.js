@@ -32,22 +32,7 @@ export const NoteProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('notes', JSON.stringify(notes))
   }, [notes])
-  //   const addNote = (note) => {
-  //     setNotes(...notes, note)
-  //   }
-  //   // id var mı kontrolü eklenebilir
-  //   const editNote = (id, note) => {
-  //     notes[id] = note
-  //     setNotes(notes)
-  //   }
-  //   const deleteNote = (id) => {
-  //     const notes_ = notes.filter((note) => note.id !== id)
-  //     setNotes(...notes_)
-  //     }
 
-  //     addNote,
-  //     editNote,
-  //     deleteNote,
   const values = {
     notes,
     setNotes,

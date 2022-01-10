@@ -17,7 +17,7 @@ export default function EditModal({ setAddModal }) {
       title: title,
       text: text,
     })
-    setNotes(notes)
+    setNotes([...notes])
     setAddModal(false)
   }
 
